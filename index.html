@@ -381,6 +381,11 @@ const CONFIG = {
   autoRotate: true,   // slow drift when nobody is touching the sphere
 
   photos: [
+    { title:"Pier at Last Light", place:"", year:"", exif:"", note:"", src:"photos/lake-pier-sunset.jpg", thumb:"photos/lake-pier-sunset-thumb.jpg" },
+    { title:"Fjord from Above", place:"", year:"", exif:"", note:"", src:"photos/fjord-overlook.jpg", thumb:"photos/fjord-overlook-thumb.jpg" },
+    { title:"Aurora over the Snowfield", place:"", year:"", exif:"", note:"", src:"photos/aurora-snowfield.jpg", thumb:"photos/aurora-snowfield-thumb.jpg" },
+    { title:"Poppies into the Sun", place:"", year:"", exif:"", note:"", src:"photos/poppy-field.jpg", thumb:"photos/poppy-field-thumb.jpg" },
+    { title:"Road to the Volcanoes", place:"", year:"", exif:"", note:"", src:"photos/desert-road.jpg", thumb:"photos/desert-road-thumb.jpg" },
     { title:"Cold Front, Late Afternoon", place:"Lofoten, Norway", year:2025, exif:"f/8 · 1/250 s · ISO 200 · 70 mm", note:"The cloud came over the pass in about four minutes. I had time for three frames and a change of gloves.", scene:"ridges", palette:"slate", aspect:1.5 },
     { title:"Low Tide at First Light", place:"Isle of Harris, Scotland", year:2024, exif:"f/11 · 1/60 s · ISO 100 · 35 mm", note:"The tide was going out fast enough that the foreground changed between exposures.", scene:"sea", palette:"dawn", aspect:1.5 },
     { title:"Six Cranes Leaving", place:"Hornborgasjön, Sweden", year:2025, exif:"f/5.6 · 1/2000 s · ISO 800 · 500 mm", note:"They lift off in family groups. I waited for one group small enough to read as a single shape.", scene:"birds", palette:"mist", flock:"v", count:6, aspect:1.5 },
@@ -611,7 +616,8 @@ for (let i = 0; i < N; i++) {
   const x = Math.cos(th) * rad, z = Math.sin(th) * rad;
   vecs.push({ x, y: -y, z, lat: Math.asin(y) / D, lon: Math.atan2(x, z) / D, d: -1 });
   const p = P[i];
-  const card = el("button", { class: "card", type: "button", "data-i": i, "aria-label": `${p.title}, ${p.place}. Open photograph.` }, el("img", { alt: "", draggable: "false" }));
+  const label = p.place ? `${p.title}, ${p.place}` : p.title;
+  const card = el("button", { class: "card", type: "button", "data-i": i, "aria-label": `${label}. Open photograph.` }, el("img", { alt: "", draggable: "false" }));
   world.append(card); cards.push(card);
 
   const row = el("button", { type: "button", "data-i": i },
@@ -619,7 +625,7 @@ for (let i = 0; i < N; i++) {
     el("span", { class: "p", text: p.place }), el("span", { class: "y", text: p.year || "" }), el("span", { class: "x", text: p.exif || "" }));
   $("#list").append(el("li", { class: "row" }, row)); rows.push(row);
 
-  const a = p.aspect || 1.5, timg = el("img", { alt: `${p.title}, ${p.place}`, width: Math.round(600 * Math.min(a, 1)), height: Math.round(600 / Math.max(a, 1)), loading: "lazy" });
+  const a = p.aspect || 1.5, timg = el("img", { alt: label, width: Math.round(600 * Math.min(a, 1)), height: Math.round(600 / Math.max(a, 1)), loading: "lazy" });
   const tile = el("button", { class: "tile", type: "button", "data-i": i }, el("span", { class: "ph" }, timg), el("span", { class: "cap" }, el("b", { text: p.title }), el("span", { text: p.place })));
   $("#masonry").append(tile); tiles.push(tile);
 }
@@ -758,12 +764,12 @@ function fitViewer() {
 }
 function fill(i) {
   const p = P[i], im = images[i];
-  vimg.alt = `${p.title}, ${p.place}`;
+  vimg.alt = p.place ? `${p.title}, ${p.place}` : p.title;
   if (im) {
     vimg.src = im.thumb;
     if (im.full !== im.thumb) { const t = ++token; loadImg(im.full).then(x => { if (t === token) vimg.src = x.src; }).catch(() => {}); }
   }
-  $("#vTitle").textContent = p.title; $("#vPlace").textContent = p.place + (p.year ? " · " + p.year : "");
+  $("#vTitle").textContent = p.title; $("#vPlace").textContent = [p.place, p.year].filter(Boolean).join(" · ");
   $("#vExif").textContent = p.exif || ""; $("#vNote").textContent = p.note || "";
   $("#vCount").textContent = num(i + 1) + " / " + num(N);
 }
