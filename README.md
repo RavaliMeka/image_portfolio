@@ -2,13 +2,13 @@
 
 A one-page portfolio for photographers. The photographs sit on a 3D sphere you can turn by dragging. There are also an index list, a grid, a full-screen viewer and an About panel.
 
-- One file, `index.html`. No build step, no frameworks, no dependencies.
+- Three files: `index.html` (page structure), `style.css` (styling) and `script.js` (behaviour and settings). No build step, no frameworks, no dependencies.
 - Works on phones and tablets (drag, swipe, tap) and from the keyboard.
 - Respects the operating system's reduced-motion setting.
 
 ## Make it yours
 
-Open `index.html` and scroll to the `CONFIG` block near the bottom. Everything on the page comes from there:
+Open `script.js`. The `CONFIG` block at the top holds the settings. Everything on the page comes from there:
 
 | Field | What it does |
 | --- | --- |
@@ -24,7 +24,7 @@ Open `index.html` and scroll to the `CONFIG` block near the bottom. Everything o
 ### Adding photographs
 
 1. Put your images in a `photos/` folder next to `index.html`.
-2. Give each entry in `photos` a `src`, for example `src: "photos/01.jpg"`.
+2. In `script.js`, give each entry in `photos` a `src`, for example `src: "photos/01.jpg"`.
 3. Optionally add a smaller `thumb` (about 800 px wide) for faster loading. The full `src` loads in the viewer.
 
 The sphere works best with 15 to 40 photographs. Images are shown at their own shape: the page reads each one's width and height.
