@@ -379,6 +379,7 @@ const CONFIG = {
   ],
   introVideo: "",     // optional: URL of a short, muted .mp4 played once after loading
   autoRotate: true,   // slow drift when nobody is touching the sphere
+  sphereCount: 21,    // the sphere repeats photos until it shows at least this many
 
   photos: [
     { title:"Pier at Last Light", place:"", year:"", exif:"", note:"", src:"photos/lake-pier-sunset.jpg", thumb:"photos/lake-pier-sunset-thumb.jpg" },
@@ -393,31 +394,7 @@ const CONFIG = {
     { title:"First Crocus", place:"", year:"", exif:"", note:"", src:"photos/crocus-spring.jpg", thumb:"photos/crocus-spring-thumb.jpg" },
     { title:"Cosmos against a Pale Sky", place:"", year:"", exif:"", note:"", src:"photos/cosmos-meadow.jpg", thumb:"photos/cosmos-meadow-thumb.jpg" },
     { title:"Daisies in Evening Light", place:"", year:"", exif:"", note:"", src:"photos/daisies-evening.jpg", thumb:"photos/daisies-evening-thumb.jpg" },
-    { title:"Looking up into Blossom", place:"", year:"", exif:"", note:"", src:"photos/cherry-blossom-trunk.jpg", thumb:"photos/cherry-blossom-trunk-thumb.jpg" },
-    { title:"Cold Front, Late Afternoon", place:"Lofoten, Norway", year:2025, exif:"f/8 · 1/250 s · ISO 200 · 70 mm", note:"The cloud came over the pass in about four minutes. I had time for three frames and a change of gloves.", scene:"ridges", palette:"slate", aspect:1.5 },
-    { title:"Low Tide at First Light", place:"Isle of Harris, Scotland", year:2024, exif:"f/11 · 1/60 s · ISO 100 · 35 mm", note:"The tide was going out fast enough that the foreground changed between exposures.", scene:"sea", palette:"dawn", aspect:1.5 },
-    { title:"Six Cranes Leaving", place:"Hornborgasjön, Sweden", year:2025, exif:"f/5.6 · 1/2000 s · ISO 800 · 500 mm", note:"They lift off in family groups. I waited for one group small enough to read as a single shape.", scene:"birds", palette:"mist", flock:"v", count:6, aspect:1.5 },
-    { title:"Polar Night, 11:40 pm", place:"Senja, Norway", year:2026, exif:"f/2.8 · 8 s · ISO 3200 · 20 mm", note:"Minus nineteen. The batteries lasted forty minutes inside my jacket and twelve outside it.", scene:"aurora", palette:"polar", aspect:0.667 },
-    { title:"Erg Chebbi, West Face", place:"Merzouga, Morocco", year:2023, exif:"f/9 · 1/320 s · ISO 100 · 105 mm", note:"Wind had cleared every footprint overnight. By nine the light was too flat to use.", scene:"dunes", palette:"amber", aspect:1.5 },
-    { title:"Spruce in Cloud", place:"Bavarian Forest, Germany", year:2024, exif:"f/6.3 · 1/125 s · ISO 400 · 85 mm", note:"Fog sorts a forest by distance. Each step back loses a little more contrast.", scene:"forest", palette:"fog", aspect:0.8 },
-    { title:"Ridge After Rain", place:"Cairngorms, Scotland", year:2025, exif:"f/10 · 1/200 s · ISO 100 · 135 mm", note:"Twenty minutes of sun between two showers, low enough to pick out every fold in the hill.", scene:"ridges", palette:"golden", aspect:1.5 },
-    { title:"Headland, Blue Hour", place:"Big Sur, California", year:2024, exif:"f/8 · 4 s · ISO 64 · 24 mm", note:"Shot after the colour had gone, when the sea and sky finally matched.", scene:"sea", palette:"blue", aspect:1.5 },
-    { title:"Starlings Over the Reeds", place:"Somerset Levels, England", year:2023, exif:"f/4 · 1/1600 s · ISO 1600 · 200 mm", note:"Roughly forty thousand birds, and about ninety seconds before they dropped into the reeds.", scene:"birds", palette:"dusk", flock:"cloud", aspect:1.5 },
-    { title:"Green Curtain", place:"Abisko, Sweden", year:2025, exif:"f/2 · 6 s · ISO 2500 · 14 mm", note:"The display lasted most of the night. This was the only ten minutes it moved fast enough to fold.", scene:"aurora", palette:"polar", aspect:1.5 },
-    { title:"Salt Pan Edge", place:"Sossusvlei, Namibia", year:2026, exif:"f/11 · 1/250 s · ISO 100 · 200 mm", note:"Half an hour after sunrise the shadow side of each dune is still cold to stand in.", scene:"dunes", palette:"rose", aspect:1.778 },
-    { title:"Larch Line", place:"Dolomites, Italy", year:2024, exif:"f/8 · 1/100 s · ISO 200 · 100 mm", note:"Larches are the only conifers that turn. They had about a week left.", scene:"forest", palette:"golden", aspect:1.5 },
-    { title:"Five Ridges", place:"Great Smoky Mountains, Tennessee", year:2023, exif:"f/11 · 1/60 s · ISO 100 · 300 mm", note:"The haze that gives these mountains their name does the depth work for you.", scene:"ridges", palette:"blue", aspect:1.778 },
-    { title:"Breakwater", place:"Reykjanes, Iceland", year:2025, exif:"f/16 · 1/15 s · ISO 50 · 50 mm", note:"Slow enough to soften the swell, fast enough to keep the shape of each wave.", scene:"sea", palette:"slate", aspect:1.5 },
-    { title:"Geese at Sunrise", place:"Bosque del Apache, New Mexico", year:2024, exif:"f/6.3 · 1/2500 s · ISO 640 · 600 mm", note:"The morning blast-off. I framed one skein and let the rest fly through the edges.", scene:"birds", palette:"golden", flock:"v", count:11, aspect:1.5 },
-    { title:"Moonrise Over Snow", place:"Yukon, Canada", year:2026, exif:"f/4 · 2 s · ISO 800 · 85 mm", note:"No aurora that night. The moon came up instead and lit the whole valley blue.", scene:"aurora", palette:"polar", glow:0.25, moon:true, aspect:1.5 },
-    { title:"Shadow Line", place:"Wadi Rum, Jordan", year:2025, exif:"f/8 · 1/400 s · ISO 100 · 70 mm", note:"Sand this red holds colour even in hard light, which is the only reason I kept shooting at noon.", scene:"dunes", palette:"amber", aspect:0.667 },
-    { title:"Valley Fog, 6:10 am", place:"Glen Coe, Scotland", year:2024, exif:"f/9 · 1/50 s · ISO 200 · 150 mm", note:"The inversion broke at half past six. This was the last frame with the whole valley under it.", scene:"forest", palette:"mist", aspect:1.5 },
-    { title:"Distant Weather", place:"Patagonia, Argentina", year:2026, exif:"f/8 · 1/320 s · ISO 200 · 85 mm", note:"Rain somewhere behind the third ridge, pink light on everything in front of it.", scene:"ridges", palette:"rose", aspect:1.5 },
-    { title:"Long Exposure, Calm Sea", place:"Algarve, Portugal", year:2023, exif:"f/14 · 90 s · ISO 50 · 28 mm", note:"Ninety seconds flattens the water. The sky does the rest.", scene:"sea", palette:"dusk", aspect:0.8 },
-    { title:"Swifts Before the Storm", place:"Camargue, France", year:2025, exif:"f/5 · 1/3200 s · ISO 1000 · 400 mm", note:"Swifts feed low when the pressure drops. Their flight path tells you the storm is coming.", scene:"birds", palette:"slate", flock:"v", count:9, aspect:1.5 },
-    { title:"Two Hours of Green", place:"Tromsø, Norway", year:2024, exif:"f/2.8 · 10 s · ISO 1600 · 16 mm", note:"Taken from the end of my own road, which is still the best place I know to wait.", scene:"aurora", palette:"polar", aspect:1.5 },
-    { title:"Dune Crest at Noon", place:"Rub' al Khali, Oman", year:2026, exif:"f/11 · 1/800 s · ISO 100 · 240 mm", note:"Hard light makes the crest a knife edge. Everything else turns into flat colour.", scene:"dunes", palette:"rose", aspect:1.5 },
-    { title:"Old Growth", place:"Hoh Rainforest, Washington", year:2025, exif:"f/7.1 · 1/30 s · ISO 400 · 50 mm", note:"Moss on everything, and a mist that never quite lifted all day.", scene:"forest", palette:"green", aspect:1.5 }
+    { title:"Looking up into Blossom", place:"", year:"", exif:"", note:"", src:"photos/cherry-blossom-trunk.jpg", thumb:"photos/cherry-blossom-trunk-thumb.jpg" }
   ]
 };
 /* ===================================================================== */
@@ -453,11 +430,11 @@ const years = P.map(p => p.year).filter(Boolean);
 const span = years.length ? (Math.min(...years) === Math.max(...years) ? String(years[0]) : Math.min(...years) + "–" + Math.max(...years)) : "";
 $("#loadName").textContent = CONFIG.name;
 $("#markName").textContent = CONFIG.name;
-$("#markRole").textContent = "Photographs " + span;
+$("#markRole").textContent = span ? "Photographs " + span : "Photographs";
 $("#mark").setAttribute("aria-label", CONFIG.name + ", back to the sphere");
 const hl = $("#headline");
 for (const part of CONFIG.headline) hl.append(typeof part === "string" ? part : el("em", { text: part.em }));
-$("#statMeta").textContent = N + " photographs · " + span + " · " + (finePointer ? "Drag to turn, click to open" : "Swipe to turn, tap to open");
+$("#statMeta").textContent = [N + " photographs", span, finePointer ? "Drag to turn, click to open" : "Swipe to turn, tap to open"].filter(Boolean).join(" · ");
 $("#indexCount").textContent = N + " photographs";
 $("#gridCount").textContent = N + " photographs";
 $("#aName").textContent = CONFIG.name;
@@ -619,14 +596,19 @@ const loadImg = src => new Promise((res, rej) => { const im = new Image(); im.de
 const stage = $("#stage"), world = $("#world");
 const cards = [], vecs = [], rows = [], tiles = [];
 const GA = Math.PI * (3 - Math.sqrt(5));
-for (let i = 0; i < N; i++) {
-  const y = N > 1 ? 1 - (i / (N - 1)) * 2 : 0, rad = Math.sqrt(Math.max(0, 1 - y * y)), th = i * GA;
+const M = Math.max(N, CONFIG.sphereCount || 0);
+const photoOf = k => k % N;
+for (let k = 0; k < M; k++) {
+  const y = M > 1 ? 1 - (k / (M - 1)) * 2 : 0, rad = Math.sqrt(Math.max(0, 1 - y * y)), th = k * GA;
   const x = Math.cos(th) * rad, z = Math.sin(th) * rad;
   vecs.push({ x, y: -y, z, lat: Math.asin(y) / D, lon: Math.atan2(x, z) / D, d: -1 });
+  const p = P[photoOf(k)];
+  const card = el("button", { class: "card", type: "button", "data-i": photoOf(k), "aria-label": `${p.place ? `${p.title}, ${p.place}` : p.title}. Open photograph.`, tabindex: k < N ? null : "-1" }, el("img", { alt: "", draggable: "false" }));
+  world.append(card); cards.push(card);
+}
+for (let i = 0; i < N; i++) {
   const p = P[i];
   const label = p.place ? `${p.title}, ${p.place}` : p.title;
-  const card = el("button", { class: "card", type: "button", "data-i": i, "aria-label": `${label}. Open photograph.` }, el("img", { alt: "", draggable: "false" }));
-  world.append(card); cards.push(card);
 
   const row = el("button", { type: "button", "data-i": i },
     el("span", { class: "n", text: num(i + 1) }), el("span", { class: "t", text: p.title }),
@@ -650,7 +632,7 @@ function layout() {
   stage.style.setProperty("--persp", Math.round(Math.max(560, R * 2.8)) + "px");
   stage.style.perspectiveOrigin = `50% ${cy}px`;
   cards.forEach((c, i) => {
-    const a = P[i].aspect || 1.5; let w, h;
+    const a = P[photoOf(i)].aspect || 1.5; let w, h;
     if (a >= 1) { w = cw; h = cw / a; } else { h = cw * 1.05; w = h * a; }
     const v = vecs[i];
     c.style.width = w + "px"; c.style.height = h + "px"; c.style.marginLeft = -w / 2 + "px"; c.style.marginTop = -h / 2 + "px";
@@ -679,13 +661,13 @@ function frame() {
   world.style.transform = `translateZ(${camZ.toFixed(2)}px) rotateX(${pitch.toFixed(3)}deg) rotateY(${yaw.toFixed(3)}deg)`;
   const cY = Math.cos(yaw * D), sY = Math.sin(yaw * D), cP = Math.cos(pitch * D), sP = Math.sin(pitch * D);
   let best = -1, bz = -2;
-  for (let i = 0; i < N; i++) {
+  for (let i = 0; i < M; i++) {
     const v = vecs[i], z1 = -v.x * sY + v.z * cY, z2 = v.y * sP + z1 * cP;
     if (z2 > bz) { bz = z2; best = i; }
     const d = Math.round((1 - Math.pow((z2 + 1) / 2, .8)) * .86 * 100) / 100;
     if (d !== v.d) { v.d = d; cards[i].style.setProperty("--d", d); cards[i].style.pointerEvents = z2 < -.15 ? "none" : ""; }
   }
-  if (best !== facing) { facing = best; if (hovered < 0) readout(best); }
+  if (best !== facing) { facing = best; if (hovered < 0) readout(photoOf(best)); }
   requestAnimationFrame(frame);
 }
 function readout(i) {
@@ -720,11 +702,12 @@ const release = (e, click) => {
 stage.addEventListener("pointerup", e => release(e, true));
 stage.addEventListener("pointercancel", e => release(e, false));
 stage.addEventListener("wheel", e => { e.preventDefault(); camT = clamp(camT - e.deltaY * .4, -R * .8, R * .45); }, { passive: false });
-cards.forEach((c, i) => {
+cards.forEach((c, k) => {
+  const i = photoOf(k);
   c.addEventListener("click", e => { if (e.detail === 0) openShot(i, c); });
-  c.addEventListener("pointerenter", () => { if (finePointer) { hovered = i; readout(i); } });
-  c.addEventListener("pointerleave", () => { if (hovered === i) { hovered = -1; readout(facing); } });
-  c.addEventListener("focus", () => { if (c.matches(":focus-visible")) { aim = { yaw: -vecs[i].lon, pitch: clamp(-vecs[i].lat, -50, 50) }; readout(i); } });
+  c.addEventListener("pointerenter", () => { if (finePointer) { hovered = k; readout(i); } });
+  c.addEventListener("pointerleave", () => { if (hovered === k) { hovered = -1; readout(photoOf(facing)); } });
+  c.addEventListener("focus", () => { if (c.matches(":focus-visible")) { aim = { yaw: -vecs[k].lon, pitch: clamp(-vecs[k].lat, -50, 50) }; readout(i); } });
 });
 
 /* ---------- Views ---------- */
@@ -763,7 +746,9 @@ function sourceFor(i) {
   const v = body.dataset.view;
   if (v === "index") return rows[i];
   if (v === "grid") return tiles[i].querySelector("img");
-  return vecs[i].d < .55 ? cards[i] : null;
+  let best = null, bd = .55;
+  cards.forEach((c, k) => { if (photoOf(k) === i && vecs[k].d < bd) { bd = vecs[k].d; best = c; } });
+  return best;
 }
 function fitViewer() {
   const a = P[cur].aspect || 1.5, bw = vbox.clientWidth, bh = vbox.clientHeight;
@@ -899,7 +884,7 @@ async function start() {
     } else {
       const url = paintSample(p, i); images[i] = { thumb: url, full: url };
     }
-    const ci = cards[i].querySelector("img"); ci.src = images[i].thumb; ci.classList.add("in");
+    cards.forEach((c, k) => { if (photoOf(k) === i) { const ci = c.querySelector("img"); ci.src = images[i].thumb; ci.classList.add("in"); } });
     const ti = tiles[i].querySelector("img"); ti.src = images[i].thumb; ti.onload = () => ti.classList.add("in");
     ticks.children[i].classList.add("on");
     $("#loadLabel").textContent = "Preparing photograph " + num(i + 1) + " of " + num(N);

@@ -18,6 +18,7 @@ Open `index.html` and scroll to the `CONFIG` block near the bottom. Everything o
 | `email`, `links` | Contact details and outside links (Instagram, a print shop) |
 | `introVideo` | Optional URL of a short, muted `.mp4` played once after loading |
 | `autoRotate` | `false` stops the slow drift of the sphere |
+| `sphereCount` | Minimum number of cards on the sphere. With fewer photos, they repeat to fill it (default 21) |
 | `photos` | Your photographs, in order |
 
 ### Adding photographs
