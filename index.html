@@ -373,10 +373,7 @@ const CONFIG = {
   ],
   email: "sandeepkomalp@gmail.com",
   location: "Based in India. Working worldwide.",
-  links: [
-    { label: "Instagram", url: "https://www.instagram.com/" },
-    { label: "Print shop", url: "https://example.com/prints" }
-  ],
+  links: [],
   introVideo: "",     // optional: URL of a short, muted .mp4 played once after loading
   autoRotate: true,   // slow drift when nobody is touching the sphere
   sphereCount: 21,    // the sphere repeats photos until it shows at least this many
@@ -443,6 +440,7 @@ for (const t of CONFIG.bio) $("#aBio").append(el("p", { text: t }));
 for (const [t, d] of CONFIG.services) $("#aServices").append(el("div", {}, el("dt", { text: t }), el("dd", { text: d })));
 $("#aEmail").textContent = CONFIG.email;
 $("#aLocation").textContent = CONFIG.location;
+if (!CONFIG.links.length) $("#aLinks").hidden = true;
 for (const l of CONFIG.links) $("#aLinks").append(el("a", { class: "pill", href: l.url, target: "_blank", rel: "noopener", text: l.label + " ↗" }));
 if (P.some(p => !p.src)) $("#sampleNote").hidden = false;
 
