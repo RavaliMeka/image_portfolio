@@ -14,10 +14,17 @@ Open `script.js`. The `CONFIG` block at the top holds the settings. Everything o
 | --- | --- |
 | `name`, `role` | Your name and a one-line description |
 | `headline` | The statement at the bottom left. Wrap a word as `{ em: "word" }` to set it in italics |
-| `bio`, `services`, `location` | Text in the About panel |
+| `bio`, `services`, `location` | Text on the About page |
+| `portrait` | Path to a photo of you for the About page, e.g. `"photos/portrait.jpg"` (portrait shape, 4:5 works best). Empty shows your initials |
+| `lead` | One-sentence introduction shown large on the About page |
+| `facts` | Short label/value pairs on the About page, e.g. `["Based in", "India"]` |
+| `selected` | Up to three photo numbers shown as "Selected work" on the About page |
 | `email`, `links` | Contact details and outside links (Instagram, a print shop) |
+| `tunnel` | `false` turns off the opening flight down a corridor of your photos |
 | `introVideo` | Optional URL of a short, muted `.mp4` played once after loading |
 | `autoRotate` | `false` stops the slow drift of the sphere |
+| `slideSeconds` | Seconds per photo in the viewer's slideshow (Space starts and pauses it) |
+| `readExif` | `false` stops the page reading camera details from the photo files |
 | `sphereCount` | Minimum number of cards on the sphere. With fewer photos, they repeat to fill it (default 21) |
 | `photos` | Your photographs, in order |
 
@@ -27,9 +34,17 @@ Open `script.js`. The `CONFIG` block at the top holds the settings. Everything o
 2. In `script.js`, give each entry in `photos` a `src`, for example `src: "photos/01.jpg"`.
 3. Optionally add a smaller `thumb` (about 800 px wide) for faster loading. The full `src` loads in the viewer.
 
+Add `collection: "Landscapes"` (any name) to a photo to group it. The Index and Grid then show a filter button for each collection.
+
+### Camera details
+
+Add `aperture`, `shutter`, `iso`, `focal`, `camera`, `lens` and `date` to a photo to show them in the viewer, for example `aperture:"2.8", shutter:"1/500", iso:400, focal:85, camera:"Sony A7 IV"`. If you leave them out, the page reads them from the image file's own EXIF data, as long as the file still has it. Many editors and chat apps strip that data, so upload original exports.
+
+Each photo has its own link, e.g. `#photo-07`, which opens it directly in the viewer. The viewer's **Copy link** button copies it, and **Ask about this photo** opens an email to you with the photo's title in the subject.
+
 The sphere works best with 15 to 40 photographs. Images are shown at their own shape: the page reads each one's width and height.
 
-Entries without `src` show a sample landscape drawn in the browser (`scene`: `ridges`, `sea`, `dunes`, `forest`, `aurora`, `birds`; `palette`: `slate`, `dawn`, `golden`, `blue`, `mist`, `dusk`, `amber`, `rose`, `polar`, `fog`, `green`). Once every photo has a `src`, the note about samples in the About panel disappears.
+Entries without `src` show a sample landscape drawn in the browser (`scene`: `ridges`, `sea`, `dunes`, `forest`, `aurora`, `birds`; `palette`: `slate`, `dawn`, `golden`, `blue`, `mist`, `dusk`, `amber`, `rose`, `polar`, `fog`, `green`). Once every photo has a `src`, the note about samples on the About page disappears.
 
 ## Publish it
 
@@ -42,7 +57,7 @@ To test locally, open `index.html` in a browser, or run `python3 -m http.server`
 
 ## Links to views
 
-`#sphere`, `#index` and `#grid` open those views directly, e.g. `https://example.com/#grid`.
+`#sphere`, `#strip`, `#index`, `#grid` and `#about` open those views directly, e.g. `https://example.com/#grid`.
 
 ## Credits
 

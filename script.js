@@ -7,42 +7,61 @@
      thumb   optional smaller copy for the sphere and grid (about 800px wide)
      aspect  width / height, e.g. 1.5 for 3:2, 0.667 for 2:3. Detected
              automatically from the image when src is set.
+     camera, lens, aperture, shutter, iso, focal, date
+             optional camera details shown in the viewer, e.g.
+             aperture:"2.8", shutter:"1/500", iso:400, focal:85.
+             Leave them out and the page reads them from the photo
+             file itself when it still has its camera (EXIF) data.
+     collection  optional group name ("Landscapes"); Index and Grid show a
+             filter for each collection
    Leave src empty to show a drawn sample landscape (scene + palette).
    ===================================================================== */
 const CONFIG = {
   name: "Sandeep Komal",
-  role: "Landscape and wildlife photographer",
-  headline: ["Weather, light and the ", { em: "animals" }, " that move through it."],
+  role: "Nature and landscape photographer",
+  headline: ["Open land, wildflowers and the ", { em: "light" }, " between seasons."],
   bio: [
-    "I photograph remote places in the hours either side of bad weather, usually alone and usually waiting.",
-    "Most of these frames came from returning to the same ridge, shoreline or forest edge until the light and the animals agreed."
+    "I photograph landscapes, wildflowers and the small animals that live among them, mostly in the first and last hours of daylight.",
+    "Each frame here is about one thing: a path under blossom, a lamb at the fence, the last colour over still water. I keep the edit simple and let the place do the talking."
   ],
   services: [
-    ["Editorial", "Assignments for magazines, books and conservation charities."],
-    ["Field workshops", "Two small-group trips a year, six people at most."],
-    ["Prints", "Archival pigment prints, made to order in three sizes."]
+    ["Commissions", "Landscape and nature photography for brands, books and editorial."],
+    ["Collaborations", "Travel, tourism and outdoor projects in India and abroad."],
+    ["Prints", "Prints of photographs on this site, made to order."]
   ],
   email: "sandeepkomalp@gmail.com",
   location: "Based in India. Working worldwide.",
+  // About page: portrait, a one-line introduction, short facts and three favourite photos
+  portrait: "",       // e.g. "photos/portrait.jpg"; leave empty to show your initials
+  lead: "I spend the first and last hours of the day outdoors, waiting for light to settle on ordinary places.",
+  facts: [
+    ["Based in", "India"],
+    ["Focus", "Landscapes, wildflowers and wildlife"],
+    ["Available for", "Commissions, collaborations and prints"]
+  ],
+  selected: [1, 7, 11], // photo numbers (as in the Index) shown under "Selected work"
   links: [],
   introVideo: "",     // optional: URL of a short, muted .mp4 played once after loading
   autoRotate: true,   // slow drift when nobody is touching the sphere
   sphereCount: 21,    // the sphere repeats photos until it shows at least this many
+  tunnel: true,       // fly down a corridor of your photos before the sphere appears
+  slideSeconds: 5,    // how long each photo stays up in the slideshow
+  readExif: true,     // fill in camera details from each photo's EXIF data when not typed in
 
   photos: [
-    { title:"Pier at Last Light", place:"", year:"", exif:"", note:"", src:"photos/lake-pier-sunset.jpg", thumb:"photos/lake-pier-sunset-thumb.jpg" },
-    { title:"Fjord from Above", place:"", year:"", exif:"", note:"", src:"photos/fjord-overlook.jpg", thumb:"photos/fjord-overlook-thumb.jpg" },
-    { title:"Aurora over the Snowfield", place:"", year:"", exif:"", note:"", src:"photos/aurora-snowfield.jpg", thumb:"photos/aurora-snowfield-thumb.jpg" },
-    { title:"Poppies into the Sun", place:"", year:"", exif:"", note:"", src:"photos/poppy-field.jpg", thumb:"photos/poppy-field-thumb.jpg" },
-    { title:"Road to the Volcanoes", place:"", year:"", exif:"", note:"", src:"photos/desert-road.jpg", thumb:"photos/desert-road-thumb.jpg" },
-    { title:"Butterfly on Pentas", place:"", year:"", exif:"", note:"", src:"photos/butterfly-pentas.jpg", thumb:"photos/butterfly-pentas-thumb.jpg" },
-    { title:"Oriole in Blossom", place:"", year:"", exif:"", note:"", src:"photos/oriole-blossom.jpg", thumb:"photos/oriole-blossom-thumb.jpg" },
-    { title:"Lamb by the Fence", place:"", year:"", exif:"", note:"", src:"photos/lamb-meadow.jpg", thumb:"photos/lamb-meadow-thumb.jpg" },
-    { title:"Under the Cherry Trees", place:"", year:"", exif:"", note:"", src:"photos/cherry-blossom-path.jpg", thumb:"photos/cherry-blossom-path-thumb.jpg" },
-    { title:"First Crocus", place:"", year:"", exif:"", note:"", src:"photos/crocus-spring.jpg", thumb:"photos/crocus-spring-thumb.jpg" },
-    { title:"Cosmos against a Pale Sky", place:"", year:"", exif:"", note:"", src:"photos/cosmos-meadow.jpg", thumb:"photos/cosmos-meadow-thumb.jpg" },
-    { title:"Daisies in Evening Light", place:"", year:"", exif:"", note:"", src:"photos/daisies-evening.jpg", thumb:"photos/daisies-evening-thumb.jpg" },
-    { title:"Looking up into Blossom", place:"", year:"", exif:"", note:"", src:"photos/cherry-blossom-trunk.jpg", thumb:"photos/cherry-blossom-trunk-thumb.jpg" }
+    { title:"Pier at Last Light", place:"", year:"", exif:"", note:"", collection:"Landscapes", src:"photos/lake-pier-sunset.jpg", thumb:"photos/lake-pier-sunset-thumb.jpg" },
+    { title:"Fjord from Above", place:"", year:"", exif:"", note:"", collection:"Landscapes", src:"photos/fjord-overlook.jpg", thumb:"photos/fjord-overlook-thumb.jpg" },
+    { title:"Aurora over the Snowfield", place:"", year:"", exif:"", note:"", collection:"Landscapes", src:"photos/aurora-snowfield.jpg", thumb:"photos/aurora-snowfield-thumb.jpg" },
+    { title:"Poppies into the Sun", place:"", year:"", exif:"", note:"", collection:"Flowers", src:"photos/poppy-field.jpg", thumb:"photos/poppy-field-thumb.jpg" },
+    { title:"Road to the Volcanoes", place:"", year:"", exif:"", note:"", collection:"Landscapes", src:"photos/desert-road.jpg", thumb:"photos/desert-road-thumb.jpg" },
+    { title:"Butterfly on Pentas", place:"", year:"", exif:"", note:"", collection:"Wildlife", src:"photos/butterfly-pentas.jpg", thumb:"photos/butterfly-pentas-thumb.jpg" },
+    { title:"Oriole in Blossom", place:"", year:"", exif:"", note:"", collection:"Wildlife", src:"photos/oriole-blossom.jpg", thumb:"photos/oriole-blossom-thumb.jpg" },
+    { title:"Lamb by the Fence", place:"", year:"", exif:"", note:"", collection:"Wildlife", src:"photos/lamb-meadow.jpg", thumb:"photos/lamb-meadow-thumb.jpg" },
+    { title:"Under the Cherry Trees", place:"", year:"", exif:"", note:"", collection:"Landscapes", src:"photos/cherry-blossom-path.jpg", thumb:"photos/cherry-blossom-path-thumb.jpg" },
+    { title:"First Crocus", place:"", year:"", exif:"", note:"", collection:"Flowers", src:"photos/crocus-spring.jpg", thumb:"photos/crocus-spring-thumb.jpg" },
+    { title:"Cosmos against a Pale Sky", place:"", year:"", exif:"", note:"", collection:"Flowers", src:"photos/cosmos-meadow.jpg", thumb:"photos/cosmos-meadow-thumb.jpg" },
+    { title:"Daisies in Evening Light", place:"", year:"", exif:"", note:"", collection:"Flowers", src:"photos/daisies-evening.jpg", thumb:"photos/daisies-evening-thumb.jpg" },
+    { title:"Looking up into Blossom", place:"", year:"", exif:"", note:"", collection:"Flowers", src:"photos/cherry-blossom-trunk.jpg", thumb:"photos/cherry-blossom-trunk-thumb.jpg" }
   ]
 };
 /* ===================================================================== */
@@ -88,6 +107,13 @@ $("#gridCount").textContent = N + " photographs";
 $("#aName").textContent = CONFIG.name;
 $("#aRole").textContent = CONFIG.role;
 for (const t of CONFIG.bio) $("#aBio").append(el("p", { text: t }));
+$("#aLead").textContent = CONFIG.lead || ""; $("#aLead").hidden = !CONFIG.lead;
+for (const [k, v] of CONFIG.facts || []) $("#aFacts").append(el("div", {}, el("dt", { text: k }), el("dd", { text: v })));
+$("#aFacts").hidden = !(CONFIG.facts || []).length;
+if (CONFIG.portrait) $("#aPortrait").append(el("img", { src: CONFIG.portrait, alt: "Portrait of " + CONFIG.name }));
+else $("#aPortrait").append(el("div", { class: "mono", "aria-hidden": "true", text: CONFIG.name.split(/\s+/).map(w => w[0]).slice(0, 2).join("") }));
+$("#aWrite").href = "mailto:" + CONFIG.email;
+$("#statAbout").textContent = "About " + CONFIG.name.split(/\s+/)[0] + " →";
 for (const [t, d] of CONFIG.services) $("#aServices").append(el("div", {}, el("dt", { text: t }), el("dd", { text: d })));
 $("#aEmail").textContent = CONFIG.email;
 $("#aLocation").textContent = CONFIG.location;
@@ -269,6 +295,93 @@ for (let i = 0; i < N; i++) {
   $("#masonry").append(tile); tiles.push(tile);
 }
 
+/* ---------- Camera details ---------- */
+const autoEx = new Array(N).fill(null);
+const MONTHS = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+const fmt = {
+  aperture: v => /^f\//i.test(String(v)) ? String(v) : "f/" + v,
+  shutter: v => typeof v === "number" ? (v >= 1 ? Math.round(v * 10) / 10 + " s" : "1/" + Math.round(1 / v) + " s") : (/s$/.test(String(v)) ? String(v) : v + " s"),
+  iso: v => String(v),
+  focal: v => /mm$/.test(String(v)) ? String(v) : v + " mm",
+  date: v => { const m = /^(\d{4}):(\d{2}):(\d{2})/.exec(String(v)); return m ? `${+m[3]} ${MONTHS[+m[2] - 1]} ${m[1]}` : String(v); }
+};
+function exOf(i) {
+  const p = P[i], a = autoEx[i] || {}, pick = k => p[k] != null && p[k] !== "" ? p[k] : a[k];
+  const out = {};
+  for (const k of ["camera", "lens", "aperture", "shutter", "iso", "focal", "date"]) { const v = pick(k); if (v != null && v !== "") out[k] = fmt[k] ? fmt[k](v) : String(v); }
+  return out;
+}
+function exLine(i) {
+  const e = exOf(i), parts = [e.aperture, e.shutter, e.iso && "ISO " + e.iso, e.focal].filter(Boolean);
+  return parts.length ? parts.join(" · ") : (P[i].exif || "");
+}
+function parseExif(buf) {
+  const v = new DataView(buf);
+  if (v.byteLength < 4 || v.getUint16(0) !== 0xFFD8) return null;
+  let o = 2;
+  while (o + 10 < v.byteLength) {
+    const m = v.getUint16(o), len = v.getUint16(o + 2);
+    if (m === 0xFFE1 && v.getUint32(o + 4) === 0x45786966) return readTiff(v, o + 10);
+    if ((m & 0xFF00) !== 0xFF00 || m === 0xFFDA) break;
+    o += 2 + len;
+  }
+  return null;
+}
+function readTiff(v, t) {
+  const le = v.getUint16(t) === 0x4949, u16 = p => v.getUint16(p, le), u32 = p => v.getUint32(p, le);
+  const str = (p, n) => { let s = ""; for (let i = 0; i < n; i++) { const c = v.getUint8(p + i); if (!c) break; s += String.fromCharCode(c); } return s.trim(); };
+  const val = e => {
+    const type = u16(e + 2), n = u32(e + 4), off = e + 8;
+    if (type === 2) return str(n > 4 ? t + u32(off) : off, n);
+    if (type === 3) return u16(off);
+    if (type === 4) return u32(off);
+    if (type === 5) { const p = t + u32(off), d = u32(p + 4); return d ? u32(p) / d : null; }
+    if (type === 10) { const p = t + u32(off), d = v.getInt32(p + 4, le); return d ? v.getInt32(p, le) / d : null; }
+    return null;
+  };
+  const ifd = (p, cb) => { const n = u16(p); for (let k = 0; k < n; k++) cb(u16(p + 2 + k * 12), p + 2 + k * 12); };
+  const r = {}; let sub = 0, make = "", model = "";
+  ifd(t + u32(t + 4), (tag, e) => { if (tag === 0x010F) make = val(e); else if (tag === 0x0110) model = val(e); else if (tag === 0x8769) sub = u32(e + 8); });
+  if (sub) ifd(t + sub, (tag, e) => {
+    const x = val(e); if (x == null || x === "") return;
+    if (tag === 0x829A) r.shutter = x; else if (tag === 0x829D) r.aperture = Math.round(x * 10) / 10;
+    else if (tag === 0x8827) r.iso = x; else if (tag === 0x920A) r.focal = Math.round(x);
+    else if (tag === 0xA434) r.lens = x; else if (tag === 0x9003) r.date = x;
+  });
+  if (model) r.camera = make && !model.toLowerCase().startsWith(make.toLowerCase().split(" ")[0]) ? make + " " + model : model;
+  return Object.keys(r).length ? r : null;
+}
+async function readAllExif() {
+  if (CONFIG.readExif === false || !window.fetch || location.protocol === "file:") return;
+  for (let i = 0; i < N; i++) {
+    if (!P[i].src) continue;
+    try { const res = await fetch(P[i].src); if (res.ok) autoEx[i] = parseExif(await res.arrayBuffer()); } catch (_) {}
+    if (autoEx[i]) { rows[i].querySelector(".x").textContent = exLine(i); if (viewing && cur === i) fill(i); }
+  }
+  readout(hovered >= 0 ? photoOf(hovered) : photoOf(facing));
+}
+
+rows.forEach((b, i) => { b.querySelector(".x").textContent = exLine(i); });
+const revealers = {};
+
+/* ---------- Collections ---------- */
+const COLS = [...new Set(P.map(p => p.collection).filter(Boolean))];
+let filter = "All";
+const inFilter = i => filter === "All" || P[i].collection === filter;
+function applyFilter(f) {
+  filter = f; let n = 0;
+  P.forEach((_, i) => { const on = inFilter(i); rows[i].parentElement.hidden = !on; tiles[i].hidden = !on; if (on) n++; });
+  document.querySelectorAll(".chips button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.f === f)));
+  $("#indexCount").textContent = $("#gridCount").textContent = n + (n === 1 ? " photograph" : " photographs");
+  const rv = revealers[body.dataset.view]; if (rv) rv();
+}
+for (const id of ["#indexChips", "#gridChips"]) {
+  const box = $(id);
+  if (!COLS.length) { box.hidden = true; continue; }
+  for (const c of ["All", ...COLS]) box.append(el("button", { type: "button", "data-f": c, "aria-pressed": "false", text: c, onclick: () => applyFilter(c) }));
+}
+applyFilter("All");
+
 let R = 300, cw = 120;
 function layout() {
   const W = innerWidth, H = innerHeight, bar = $("#bar").offsetHeight;
@@ -294,7 +407,8 @@ function layout() {
 let yaw = 0, pitch = -8, vYaw = 0, vPitch = 0, camZ = 0, camT = 0;
 let dragging = false, hovered = -1, facing = -1, aim = null, viewing = false;
 function frame() {
-  if (!viewing && body.dataset.view === "sphere") {
+  if (body.dataset.view === "strip") stripFrame();
+  if (!viewing && body.dataset.view === "sphere" && !morphing) {
     if (aim && !dragging) {
       const dy = ((aim.yaw - yaw) % 360 + 540) % 360 - 180;
       yaw += dy * .12; pitch += (aim.pitch - pitch) * .12;
@@ -302,7 +416,7 @@ function frame() {
     } else if (!dragging) {
       yaw += vYaw; pitch += vPitch; vYaw *= .94; vPitch *= .94;
       if (Math.abs(vYaw) < .002) vYaw = 0; if (Math.abs(vPitch) < .002) vPitch = 0;
-      if (CONFIG.autoRotate && !reduce && hovered < 0 && body.classList.contains("ready")) yaw += .04;
+      if (CONFIG.autoRotate && !reduce && hovered < 0 && !morphing && body.classList.contains("ready")) yaw += .04;
     }
     pitch = clamp(pitch, -50, 50);
   }
@@ -323,7 +437,7 @@ function readout(i) {
   if (i < 0) return; const p = P[i];
   $("#rNo").textContent = "Frame " + num(i + 1) + " / " + num(N);
   $("#rYear").textContent = p.year || "";
-  $("#rTitle").textContent = p.title; $("#rPlace").textContent = p.place; $("#rExif").textContent = p.exif || "";
+  $("#rTitle").textContent = p.title; $("#rPlace").textContent = p.place; $("#rExif").textContent = exLine(i);
 }
 
 /* ---------- Drag, wheel and keys on the sphere ---------- */
@@ -359,17 +473,201 @@ cards.forEach((c, k) => {
   c.addEventListener("focus", () => { if (c.matches(":focus-visible")) { aim = { yaw: -vecs[k].lon, pitch: clamp(-vecs[k].lat, -50, 50) }; readout(i); } });
 });
 
+/* ---------- Morph between sphere and grid ---------- */
+function frontCardFor(i) {
+  let best = null, bd = 9;
+  cards.forEach((c, k) => { if (photoOf(k) === i && vecs[k].d < bd) { bd = vecs[k].d; best = c; } });
+  return best ? { card: best, d: bd } : null;
+}
+function flyClones(pairs, done) {
+  if (!pairs.length) { done(); return; }
+  morphing = true;
+  const layer = el("div", { id: "morph", "aria-hidden": "true" });
+  body.append(layer);
+  let left = pairs.length;
+  pairs.forEach((p, k) => {
+    const im = el("img", { alt: "", src: p.src });
+    const box = r => ({ left: r.left + "px", top: r.top + "px", width: r.width + "px", height: r.height + "px" });
+    Object.assign(im.style, box(p.to));
+    layer.append(im);
+    const a = im.animate([
+      { ...box(p.from), opacity: p.o0 },
+      { ...box(p.to), opacity: p.o1 }
+    ], { duration: 900, delay: k * 24, easing: "cubic-bezier(.2,.7,.2,1)", fill: "both" });
+    a.onfinish = () => {
+      if (--left) return;
+      done();
+      layer.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 260, fill: "forwards" }).onfinish = () => { layer.remove(); morphing = false; };
+    };
+  });
+}
+function morphToGrid() {
+  const grid = $("#grid"); grid.scrollTop = 0;
+  tiles.forEach(t => t.classList.remove("rv", "on"));
+  const vh = innerHeight, pairs = [];
+  tiles.forEach((t, i) => {
+    if (t.hidden) return;
+    const to = t.querySelector(".ph").getBoundingClientRect();
+    if (to.top > vh || to.bottom < 0) return;
+    const f = frontCardFor(i); if (!f) return;
+    pairs.push({ src: images[i].thumb, from: f.card.getBoundingClientRect(), to, o0: Math.max(.2, 1 - f.d), o1: 1 });
+  });
+  body.classList.add("morphing");
+  flyClones(pairs, () => body.classList.remove("morphing"));
+}
+function morphToSphere() {
+  const vh = innerHeight, pairs = [], ghosts = [];
+  tiles.forEach((t, i) => {
+    if (t.hidden) return;
+    const from = t.querySelector(".ph").getBoundingClientRect();
+    if (from.top > vh || from.bottom < 0) return;
+    const f = frontCardFor(i); if (!f) return;
+    f.card.classList.add("ghost"); ghosts.push(f.card);
+    pairs.push({ src: images[i].thumb, from, to: f.card.getBoundingClientRect(), o0: 1, o1: Math.max(.2, 1 - f.d) });
+  });
+  body.classList.add("morphing");
+  flyClones(pairs, () => { ghosts.forEach(c => c.classList.remove("ghost")); body.classList.remove("morphing"); });
+}
+
+/* ---------- Parallax in the grid ---------- */
+let pxQueued = false;
+function parallax() {
+  pxQueued = false;
+  if (reduce || body.dataset.view !== "grid") return;
+  const vh = innerHeight;
+  tiles.forEach(t => {
+    if (t.hidden) return;
+    const r = t.querySelector(".ph").getBoundingClientRect();
+    if (r.bottom < -100 || r.top > vh + 100) return;
+    const c = (r.top + r.height / 2 - vh / 2) / vh;
+    t.querySelector("img").style.setProperty("--py", (-c * r.height * .08).toFixed(1) + "px");
+  });
+}
+$("#grid").addEventListener("scroll", () => { if (!pxQueued) { pxQueued = true; requestAnimationFrame(parallax); } }, { passive: true });
+
+/* ---------- Film strip ---------- */
+const track = $("#track"), strip = $("#strip"), slides = [];
+let sPos = 0, sTarget = 0, sBoxW = 600, sBoxH = 400, sShown = -1, sPress = null, sWheel = 0;
+P.forEach((p, i) => {
+  const s = el("button", { class: "slide", type: "button", "data-i": i, "aria-label": `${p.place ? `${p.title}, ${p.place}` : p.title}. Open photograph.` }, el("img", { alt: "", draggable: "false" }));
+  s.addEventListener("click", e => { if (e.detail === 0) { if (i === Math.round(sPos)) openShot(i, s); else sTarget = i; } });
+  s.addEventListener("focus", () => { if (s.matches(":focus-visible")) sTarget = i; });
+  track.append(s); slides.push(s);
+});
+function layoutStrip() {
+  const W = innerWidth, H = innerHeight, bar = $("#bar").offsetHeight, capH = W < 640 ? 150 : 140;
+  const avail = Math.max(200, H - bar - capH);
+  sBoxH = Math.min(avail * .82, 640); sBoxW = Math.min(sBoxH * 1.5, W * (W < 640 ? .8 : .58)); sBoxH = sBoxW / 1.5;
+  track.style.top = (bar + avail / 2 + 8) + "px";
+  slides.forEach(s => Object.assign(s.style, { width: sBoxW + "px", height: sBoxH + "px", marginLeft: -sBoxW / 2 + "px", marginTop: -sBoxH / 2 + "px" }));
+}
+function stripApply(force) {
+  slides.forEach((s, i) => {
+    const o = i - sPos, a = Math.abs(o), sg = Math.sign(o);
+    if (a > 4.5) { if (s.style.visibility !== "hidden") s.style.visibility = "hidden"; return; }
+    s.style.visibility = "";
+    const x = sg * (a <= 1 ? a * sBoxW * .9 : sBoxW * .9 + (a - 1) * sBoxW * .56);
+    const sc = 1 - Math.min(a, 1) * .26 - Math.max(0, a - 1) * .07;
+    const ry = -clamp(o, -1, 1) * 16;
+    s.style.transform = `translate3d(${x.toFixed(1)}px,0,${(-a * 140).toFixed(1)}px) rotateY(${ry.toFixed(2)}deg) scale(${sc.toFixed(3)})`;
+    s.style.setProperty("--d", Math.min(.7, a * .38).toFixed(2));
+    s.style.zIndex = String(100 - Math.round(a * 10));
+    s.style.pointerEvents = a > 2.5 ? "none" : "";
+  });
+  const ci = clamp(Math.round(sPos), 0, N - 1);
+  if (ci !== sShown || force) {
+    sShown = ci; const p = P[ci];
+    $("#sNo").textContent = num(ci + 1) + " / " + num(N);
+    $("#sTitle").textContent = p.title;
+    $("#sMeta").textContent = [p.place, p.year, exLine(ci)].filter(Boolean).join(" · ");
+  }
+}
+function stripFrame() {
+  if (!sPress) {
+    const d = sTarget - sPos;
+    if (Math.abs(d) < .001) { if (sPos !== sTarget) { sPos = sTarget; stripApply(); } return; }
+    sPos += reduce ? d : d * .12;
+  }
+  stripApply();
+}
+const stripStep = d => { sTarget = clamp(Math.round(sTarget) + d, 0, N - 1); };
+$("#sPrev").addEventListener("click", () => stripStep(-1));
+$("#sNext").addEventListener("click", () => stripStep(1));
+strip.addEventListener("pointerdown", e => {
+  if (e.button > 0 || e.target.closest(".snav")) return;
+  sPress = { id: e.pointerId, x: e.clientX, y: e.clientY, start: sPos, slide: e.target.closest(".slide"), moved: false, axis: null, lx: e.clientX, lt: performance.now(), v: 0 };
+});
+strip.addEventListener("pointermove", e => {
+  const p = sPress; if (!p || e.pointerId !== p.id) return;
+  const dx = e.clientX - p.x, dy = e.clientY - p.y;
+  if (!p.axis && Math.hypot(dx, dy) > 8) {
+    p.axis = Math.abs(dx) > Math.abs(dy) ? "x" : "y";
+    if (p.axis === "x") { try { strip.setPointerCapture(e.pointerId); } catch (_) {} strip.classList.add("dragging"); }
+  }
+  if (p.axis !== "x") return;
+  p.moved = true;
+  const now = performance.now(); p.v = (e.clientX - p.lx) / Math.max(1, now - p.lt); p.lx = e.clientX; p.lt = now;
+  sPos = clamp(p.start - dx / (sBoxW * .9), -.4, N - .6); sTarget = sPos;
+});
+const stripRelease = (e, click) => {
+  const p = sPress; if (!p || e.pointerId !== p.id) return;
+  sPress = null; strip.classList.remove("dragging");
+  if (p.moved) { sTarget = clamp(Math.round(sPos - p.v * 2.2), 0, N - 1); return; }
+  if (click && p.slide) { const i = +p.slide.dataset.i; if (i === Math.round(sPos)) openShot(i, p.slide); else sTarget = i; }
+};
+strip.addEventListener("pointerup", e => stripRelease(e, true));
+strip.addEventListener("pointercancel", e => stripRelease(e, false));
+strip.addEventListener("wheel", e => {
+  e.preventDefault();
+  sWheel += Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY;
+  if (Math.abs(sWheel) > 60) { stripStep(Math.sign(sWheel)); sWheel = 0; }
+}, { passive: false });
+
+/* ---------- Reveal lists as they come into view ---------- */
+function makeReveal(panel, items) {
+  if (reduce || !("IntersectionObserver" in window)) return null;
+  let batch = 0, frame = 0;
+  const io = new IntersectionObserver(entries => {
+    for (const en of entries) {
+      if (!en.isIntersecting) continue;
+      if (!frame) frame = requestAnimationFrame(() => { batch = 0; frame = 0; });
+      en.target.style.transitionDelay = Math.min(batch++, 10) * 60 + "ms";
+      en.target.classList.add("on"); io.unobserve(en.target);
+    }
+  }, { root: panel, threshold: .08 });
+  return () => items.forEach(t => { t.classList.add("rv"); t.classList.remove("on"); io.observe(t); });
+}
+revealers.index = makeReveal($("#index"), rows.map(b => b.parentElement));
+revealers.grid = makeReveal($("#grid"), tiles);
+
 /* ---------- Views ---------- */
-const VIEWS = ["sphere", "index", "grid"];
+const VIEWS = ["sphere", "strip", "index", "grid", "about"];
+let morphing = false, lastView = "sphere";
 function setView(v, write = true) {
   if (!VIEWS.includes(v)) v = "sphere";
+  const from = body.dataset.view;
+  const canMorph = !reduce && !morphing && body.classList.contains("ready");
+  if (v === "grid" && from === "sphere" && canMorph) morphToGrid();
+  else if (v === "sphere" && from === "grid" && canMorph) morphToSphere();
+  else if (v !== from && revealers[v]) revealers[v]();
+  if (v === "strip" && from !== "strip") { layoutStrip(); stripApply(true); }
   body.dataset.view = v;
+  if (v === "grid") requestAnimationFrame(parallax);
   document.querySelectorAll(".views button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.view === v)));
+  $("#aboutBtn").setAttribute("aria-pressed", String(v === "about"));
+  if (v === "about" && from !== "about") { lastView = from; $("#about").scrollTop = 0; }
   if (write) { try { history.replaceState(null, "", "#" + v); } catch (_) {} }
 }
 document.querySelectorAll(".views button").forEach(b => b.addEventListener("click", () => setView(b.dataset.view)));
 $("#mark").addEventListener("click", () => setView("sphere"));
-addEventListener("hashchange", () => setView(location.hash.slice(1), false));
+const setHash = h => { try { history.replaceState(null, "", "#" + h); } catch (_) {} };
+const photoFromHash = () => { const m = /^#photo-(\d+)$/.exec(location.hash); const i = m ? +m[1] - 1 : -1; return i >= 0 && i < N ? i : -1; };
+addEventListener("hashchange", () => {
+  const i = photoFromHash();
+  if (i >= 0) { if (viewing) { cur = i; fill(i); fitViewer(); } else openShot(i, null); return; }
+  if (viewing) closeShot();
+  setView(location.hash.slice(1), false);
+});
 rows.forEach((b, i) => b.addEventListener("click", () => openShot(i, b)));
 tiles.forEach((b, i) => b.addEventListener("click", () => openShot(i, b.querySelector("img"))));
 
@@ -390,11 +688,13 @@ if (finePointer) {
 /* ---------- Viewer ---------- */
 const viewer = $("#viewer"), vimg = $("#vimg"), vbox = $("#vBox");
 const mainParts = [$("#bar"), $("main")];
-let cur = -1, token = 0, opener = null;
+let cur = -1, token = 0, opener = null, order = [];
 function sourceFor(i) {
   const v = body.dataset.view;
   if (v === "index") return rows[i];
   if (v === "grid") return tiles[i].querySelector("img");
+  if (v === "strip") { sPos = sTarget = i; stripApply(true); return slides[i]; }
+  if (v === "about") { const b = $(`#aSelected [data-i="${i}"] img`); return b || null; }
   let best = null, bd = .55;
   cards.forEach((c, k) => { if (photoOf(k) === i && vecs[k].d < bd) { bd = vecs[k].d; best = c; } });
   return best;
@@ -412,8 +712,18 @@ function fill(i) {
     if (im.full !== im.thumb) { const t = ++token; loadImg(im.full).then(x => { if (t === token) vimg.src = x.src; }).catch(() => {}); }
   }
   $("#vTitle").textContent = p.title; $("#vPlace").textContent = [p.place, p.year].filter(Boolean).join(" · ");
-  $("#vExif").textContent = p.exif || ""; $("#vNote").textContent = p.note || "";
-  $("#vCount").textContent = num(i + 1) + " / " + num(N);
+  const e = exOf(i), LBL = [["aperture", "Aperture"], ["shutter", "Shutter"], ["iso", "ISO"], ["focal", "Focal length"]];
+  const cells = LBL.filter(([k]) => e[k]).map(([k, label]) => el("div", {}, el("dt", { text: label }), el("dd", { text: e[k] })));
+  const vexp = $("#vExp"); vexp.replaceChildren(...cells); vexp.hidden = !cells.length;
+  const gear = [e.camera, e.lens, e.date].filter(Boolean).join(" · "), vg = $("#vGear");
+  vg.replaceChildren(); if (gear) vg.append(gear); if (P[i].exampleExif) vg.append(gear ? "  " : "", el("em", { text: "Example settings" }));
+  vg.hidden = !vg.childNodes.length;
+  $("#vExif").textContent = cells.length ? "" : (p.exif || ""); $("#vNote").textContent = p.note || "";
+  const pos = order.indexOf(i);
+  $("#vCount").textContent = num(pos + 1) + " / " + num(order.length);
+  $("#vAsk").href = "mailto:" + CONFIG.email + "?subject=" + encodeURIComponent("About your photograph: " + p.title);
+  $("#vCopy").textContent = "Copy link";
+  setHash("photo-" + num(i + 1));
 }
 function flip(from, toHome) {
   if (!from || reduce) return false;
@@ -429,25 +739,57 @@ function flip(from, toHome) {
 function openShot(i, from) {
   if (viewing) return;
   opener = document.activeElement; cur = i; viewing = true;
+  const all = P.map((_, k) => k);
+  order = ["sphere", "strip", "about"].includes(body.dataset.view) ? all : all.filter(inFilter);
+  if (!order.includes(i)) order = all;
   fill(i); body.classList.add("viewing"); mainParts.forEach(e => e.inert = true);
   fitViewer(); flip(from, true);
   $("#vClose").focus({ preventScroll: true });
 }
 function closeShot() {
   if (!viewing) return;
+  setPlay(false);
   token++; flip(sourceFor(cur), false);
   body.classList.remove("viewing"); mainParts.forEach(e => e.inert = false);
   const back = cur; viewing = false; cur = -1;
+  setHash(body.dataset.view);
   setTimeout(() => { if (!viewing) { vimg.style.transition = "none"; vimg.style.transform = ""; void vimg.offsetWidth; vimg.style.transition = ""; } }, 650);
   const target = body.dataset.view === "index" ? rows[back] : body.dataset.view === "grid" ? tiles[back] : opener;
+  if (body.dataset.view === "about") setHash("about");
   if (target && target.focus) target.focus({ preventScroll: true });
 }
+let playing = false, slideT = 0;
+const SLIDE = Math.max(2, CONFIG.slideSeconds || 5) * 1000;
+function armSlide() {
+  clearTimeout(slideT);
+  if (!playing) return;
+  const bar = $("#vProg i");
+  bar.style.transition = "none"; bar.style.transform = "scaleX(0)"; void bar.offsetWidth;
+  if (!reduce) { bar.style.transition = `transform ${SLIDE}ms linear`; bar.style.transform = "scaleX(1)"; }
+  vimg.getAnimations().forEach(a => a.cancel());
+  if (!reduce) vimg.animate([{ transform: "scale(1)" }, { transform: "scale(1.04)" }], { duration: SLIDE + 600, easing: "linear", fill: "forwards" });
+  slideT = setTimeout(() => go(1), SLIDE);
+}
+function setPlay(on) {
+  playing = on;
+  const b = $("#vPlay"); b.textContent = on ? "Pause" : "Play slideshow"; b.setAttribute("aria-pressed", String(on));
+  viewer.classList.toggle("playing", on);
+  if (on) armSlide(); else { clearTimeout(slideT); vimg.getAnimations().forEach(a => a.cancel()); }
+}
+$("#vPlay").addEventListener("click", () => setPlay(!playing));
 function go(d) {
   if (!viewing) return;
-  cur = (cur + d + N) % N; fill(cur); fitViewer();
+  const L = order.length; cur = order[(order.indexOf(cur) + d + L) % L]; fill(cur); fitViewer();
+  if (playing) { if (!reduce) vimg.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 700, easing: "ease" }); armSlide(); return; }
   if (!reduce) vimg.animate([{ opacity: 0, transform: `translateX(${d * 24}px)` }, { opacity: 1, transform: "none" }], { duration: 380, easing: "cubic-bezier(.2,.7,.2,1)" });
 }
 $("#vClose").addEventListener("click", closeShot);
+$("#vCopy").addEventListener("click", e => {
+  const btn = e.currentTarget, url = location.href.split("#")[0] + "#photo-" + num(cur + 1);
+  const done = t => { btn.textContent = t; setTimeout(() => { btn.textContent = "Copy link"; }, 2200); };
+  try { navigator.clipboard.writeText(url).then(() => done("Link copied"), () => done("Link is in the address bar")); }
+  catch (_) { done("Link is in the address bar"); }
+});
 $("#vPrev").addEventListener("click", () => go(-1));
 $("#vNext").addEventListener("click", () => go(1));
 vbox.addEventListener("click", e => { if (e.target === vbox) closeShot(); });
@@ -459,15 +801,15 @@ vbox.addEventListener("pointerup", e => {
 });
 
 /* ---------- About ---------- */
-function setAbout(on) {
-  body.classList.toggle("about", on);
-  $("#aboutBtn").setAttribute("aria-expanded", String(on));
-  mainParts.forEach(e => e.inert = on);
-  (on ? $("#aboutClose") : $("#aboutBtn")).focus({ preventScroll: true });
+$("#aboutBtn").addEventListener("click", () => setView(body.dataset.view === "about" ? lastView : "about"));
+$("#statAbout").addEventListener("click", e => { e.preventDefault(); setView("about"); });
+const selIdx = (CONFIG.selected || []).map(n => n - 1).filter(i => i >= 0 && i < N).slice(0, 3);
+$("#aSelectedSec").hidden = !selIdx.length;
+for (const i of selIdx) {
+  const b = el("button", { type: "button", "data-i": i, "aria-label": `${P[i].title}. Open photograph.` }, el("span", { class: "ph" }, el("img", { alt: "" })), el("span", { class: "t", text: P[i].title }));
+  b.addEventListener("click", () => openShot(i, b.querySelector("img")));
+  $("#aSelected").append(b);
 }
-$("#aboutBtn").addEventListener("click", () => setAbout(true));
-$("#aboutClose").addEventListener("click", () => setAbout(false));
-$("#shade").addEventListener("click", () => setAbout(false));
 $("#copyBtn").addEventListener("click", e => {
   const btn = e.currentTarget;
   const fallback = () => { const r = document.createRange(); r.selectNodeContents($("#aEmail")); const s = getSelection(); s.removeAllRanges(); s.addRange(r); btn.textContent = "Selected"; };
@@ -479,9 +821,20 @@ $("#copyBtn").addEventListener("click", e => {
 
 /* ---------- Keyboard ---------- */
 addEventListener("keydown", e => {
-  if (e.key === "Escape") { if (viewing) closeShot(); else if (body.classList.contains("about")) setAbout(false); return; }
-  if (viewing) { if (e.key === "ArrowRight") go(1); if (e.key === "ArrowLeft") go(-1); return; }
-  if (body.classList.contains("about") || body.dataset.view !== "sphere") return;
+  if (e.key === "Escape") { if (viewing) closeShot(); else if (body.dataset.view === "about") setView(lastView); return; }
+  if (viewing) {
+    if (e.key === "ArrowRight") go(1); else if (e.key === "ArrowLeft") go(-1);
+    else if (e.key === " " && !(e.target && e.target.closest && e.target.closest("button, a"))) { e.preventDefault(); setPlay(!playing); }
+    return;
+  }
+  if (body.dataset.view === "about") return;
+  if (body.dataset.view === "strip") {
+    if (e.key === "ArrowRight") { stripStep(1); e.preventDefault(); }
+    else if (e.key === "ArrowLeft") { stripStep(-1); e.preventDefault(); }
+    else if (e.key === "Enter" && !(e.target && e.target.closest && e.target.closest("button, a"))) openShot(Math.round(sTarget), slides[Math.round(sTarget)]);
+    return;
+  }
+  if (body.dataset.view !== "sphere") return;
   const t = e.target; if (t && t.closest && t.closest("button:not(.card), a, input")) return;
   if (e.key === "ArrowLeft") vYaw -= 1.6; else if (e.key === "ArrowRight") vYaw += 1.6;
   else if (e.key === "ArrowUp") vPitch += 1.2; else if (e.key === "ArrowDown") vPitch -= 1.2;
@@ -495,7 +848,7 @@ addEventListener("keydown", e => {
 let lastW = innerWidth, lastH = innerHeight, rq = 0;
 const relayout = force => {
   if (!force && Math.abs(innerWidth - lastW) < 20 && Math.abs(innerHeight - lastH) < 20) return;
-  lastW = innerWidth; lastH = innerHeight; cancelAnimationFrame(rq); rq = requestAnimationFrame(() => layout());
+  lastW = innerWidth; lastH = innerHeight; cancelAnimationFrame(rq); rq = requestAnimationFrame(() => { layout(); layoutStrip(); stripApply(true); parallax(); });
 };
 addEventListener("resize", () => relayout(false));
 addEventListener("orientationchange", () => setTimeout(() => relayout(true), 220));
@@ -519,6 +872,63 @@ function playIntro() {
     const p = v.play(); if (p && p.catch) p.catch(() => setTimeout(end, 1200));
   });
 }
+function playTunnel() {
+  return new Promise(res => {
+    const W = innerWidth, H = innerHeight, hw = W / 2, hh = H / 2;
+    const S = Math.max(240, Math.min(W, H) * .55), K = 10, persp = Math.round(Math.min(W, H) * .9);
+    const tworld = el("div", { class: "tworld", "aria-hidden": "true" });
+    const title = el("div", { class: "tname", "aria-hidden": "true" }, el("b", { text: CONFIG.name }), el("span", { text: CONFIG.role }));
+    const skip = el("button", { class: "pill", type: "button", text: "Skip intro" });
+    const wrap = el("div", { id: "tunnel" }, tworld, title, skip);
+    wrap.style.perspective = persp + "px";
+    const panels = []; let n = 0;
+    for (let k = 0; k < K; k++) {
+      for (const side of ["l", "r", "t", "b"]) {
+        const z = S * (k + (side === "l" || side === "r" ? .5 : 1));
+        const i = (n++ * 5) % N, img = el("img", { alt: "", src: images[i].thumb });
+        const pnl = el("div", { class: "tp" }, img);
+        let w, h, t;
+        if (side === "l" || side === "r") {
+          w = S * .86; h = Math.min(H * .62, w / 1.5);
+          t = `translate3d(${side === "l" ? -hw : hw}px,0,${-z}px) rotateY(${side === "l" ? 90 : -90}deg)`;
+        } else {
+          h = S * .86; w = Math.min(W * .62, h * 1.5);
+          t = `translate3d(0,${side === "t" ? -hh : hh}px,${-z}px) rotateX(${side === "t" ? -90 : 90}deg)`;
+        }
+        Object.assign(pnl.style, { width: w + "px", height: h + "px", marginLeft: -w / 2 + "px", marginTop: -h / 2 + "px", transform: t });
+        tworld.append(pnl); panels.push({ el: pnl, z, o: -1 });
+      }
+    }
+    body.append(wrap);
+    const T = 4200, travel = S * (K - 2.5), t0 = performance.now();
+    let raf = 0, revealed = false, done = false;
+    const reveal = () => { if (revealed) return; revealed = true; wrap.classList.add("gone"); res(); };
+    const finish = () => { if (done) return; done = true; cancelAnimationFrame(raf); reveal(); setTimeout(() => wrap.remove(), 900); removeEventListener("keydown", onKey); };
+    const onKey = e => { if (e.key === "Escape" || e.key === "Enter" || e.key === " ") { e.preventDefault(); finish(); } };
+    skip.addEventListener("click", finish);
+    addEventListener("keydown", onKey);
+    const step = now => {
+      const t = Math.min(1, (now - t0) / T);
+      const e = t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+      const cz = e * travel;
+      tworld.style.transform = `translateZ(${cz.toFixed(1)}px)`;
+      for (const p of panels) {
+        const ahead = p.z - cz;
+        const far = clamp(1 - (ahead - S * 1.5) / (S * 4), 0, 1);
+        const near = clamp((ahead + persp * .7) / (persp * .5), 0, 1);
+        const o = Math.round(Math.min(far, near) * 100) / 100;
+        if (o !== p.o) { p.o = o; p.el.style.opacity = o; }
+      }
+      const tn = t < .22 ? 0 : t < .38 ? (t - .22) / .16 : t < .62 ? 1 : t < .74 ? 1 - (t - .62) / .12 : 0;
+      title.style.opacity = tn.toFixed(3);
+      title.style.transform = `scale(${(.96 + t * .08).toFixed(3)})`;
+      if (t > .8) reveal();
+      if (t >= 1) return finish();
+      raf = requestAnimationFrame(step);
+    };
+    raf = requestAnimationFrame(step);
+  });
+}
 async function start() {
   const t0 = performance.now();
   layout();
@@ -534,6 +944,8 @@ async function start() {
       const url = paintSample(p, i); images[i] = { thumb: url, full: url };
     }
     cards.forEach((c, k) => { if (photoOf(k) === i) { const ci = c.querySelector("img"); ci.src = images[i].thumb; ci.classList.add("in"); } });
+    slides[i].querySelector("img").src = images[i].thumb;
+    const sel = $(`#aSelected [data-i="${i}"] img`); if (sel) sel.src = images[i].thumb;
     const ti = tiles[i].querySelector("img"); ti.src = images[i].thumb; ti.onload = () => ti.classList.add("in");
     ticks.children[i].classList.add("on");
     $("#loadLabel").textContent = "Preparing photograph " + num(i + 1) + " of " + num(N);
@@ -542,11 +954,19 @@ async function start() {
   if (P.some(p => p.src)) layout();
   await wait(Math.max(0, 1000 - (performance.now() - t0)));
   const intro = CONFIG.introVideo ? playIntro() : null;
+  const tunnel = !intro && CONFIG.tunnel !== false && !reduce ? playTunnel() : null;
   $("#loader").classList.add("done");
   setTimeout(() => $("#loader").remove(), 800);
   if (intro) await intro;
+  if (tunnel) await tunnel;
   body.classList.add("ready");
   camT = 0;
+  if (!reduce) cards.forEach((c, k) => c.animate(
+    [{ transform: "translate3d(0,0,0) scale(.2)", opacity: 0 }, { transform: c.style.transform, opacity: 1 }],
+    { duration: 1300, delay: 150 + k * 32, easing: "cubic-bezier(.2,.7,.2,1)", fill: "backwards" }));
+  readAllExif();
+  const deep = photoFromHash();
+  if (deep >= 0) openShot(deep, null);
 }
 setView(location.hash.slice(1), false);
 start();
